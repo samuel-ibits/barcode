@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aztec Barcode Generator</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQk84FdHepkLlcbzO+4lWz9hQ5H5bh07kMEYx5I5Z4WlL+aWav1AzsVsp"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h1 class="card-title text-center mb-4">Aztec Barcode Generator</h1>
+
+          <!-- Input form for barcode data -->
+          <div class="mb-3">
+            <label for="barcodeData" class="form-label"
+              >Enter your JSON data</label
+            >
+            <textarea
+              class="form-control"
+              id="barcodeData"
+              rows="4"
+              placeholder='e.g. {"NIN":"71092904804", "Names": "ISYAKU MUSA", "Date of Birth":"07 Nov 2003", "Status":"Verified"}'
+            ></textarea>
+          </div>
+
+          <!-- Generate button -->
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary btn-lg" onclick="generateBarcode()">
+              Generate Barcode
+            </button>
+          </div>
+
+          <br />
+
+          <!-- Canvas for displaying the barcode -->
+          <div class="text-center mt-3">
+            <canvas
+              id="barcodeCanvas"
+              class="border rounded p-3 bg-light shadow"
+            ></canvas>
+          </div>
+
+          <!-- Download button -->
+          <div class="d-grid gap-2 mt-3">
+            <button
+              id="downloadBtn"
+              class="btn btn-success btn-lg"
+              style="display: none"
+              onclick="downloadBarcode()"
+            >
+              Download Barcode
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS & Dependencies -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+eGIvE3s1zM9z0UZdLqP2ePZpoa7L"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Barcode Generator Library -->
+    <script src="https://cdn.jsdelivr.net/npm/bwip-js@2.1.2/dist/bwip-js-min.js"></script>
+
+    <script>
+      // Function to generate the Aztec barcode
+      function generateBarcode() {
+        let data = document.getElementById("barcodeData").value;
+
+        // Try to parse the input as JSON
+        try {
+          JSON.parse(data); // Checking if it's valid JSON
+        } catch (e) {
+          alert(
+            "Invalid JSON format. Please make sure your data is correctly formatted."
+          );
+          return;
+        }
+
+        // Generate the Aztec barcode and render it on the canvas
+        bwipjs.toCanvas(
+          "barcodeCanvas",
+          {
+            bcid: "azteccode", // Aztec code symbology
+            text: data, // Data to encode
+            scale: 3, // Scaling factor
+            version: 0, // Auto version
+            eclevel: 5, // Error correction level
+            size: 30, // Symbol size in 'X' units
+          },
+          function (err) {
+            if (err) {
+              console.error("Error generating barcode:", err);
+              alert("Error generating barcode. Please check the input.");
+            } else {
+              console.log("Aztec barcode generated successfully!");
+              document.getElementById("downloadBtn").style.display = "block"; // Show download button
+            }
+          }
+        );
+      }
+
+      // Function to download the generated barcode
+      function downloadBarcode() {
+        const canvas = document.getElementById("barcodeCanvas");
+        const link = document.createElement("a");
+        link.download = "aztec_barcode.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      }
+    </script>
+  </body>
+</html>
