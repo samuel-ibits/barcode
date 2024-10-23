@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aztec Barcode Generator</title>
+    <title>Barcode Generator</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -16,7 +16,162 @@
     <div class="container mt-5">
       <div class="card shadow-lg">
         <div class="card-body">
-          <h1 class="card-title text-center mb-4">Aztec Barcode Generator</h1>
+          <h1 class="card-title text-center mb-4">Barcode Generator</h1>
+
+          <!-- Dropdown for selecting barcode type -->
+          <div class="mb-3">
+            <label for="barcodeType" class="form-label"
+              >Select Barcode Type</label
+            >
+            <select class="form-select" id="barcodeType">
+              <option value="auspost">AusPost 4 State Customer Code</option>
+              <option value="azteccode">Aztec Code</option>
+              <option value="azteccodecompact">Compact Aztec Code</option>
+              <option value="aztecrune">Aztec Runes</option>
+              <option value="bc412">BC412</option>
+              <option value="channelcode">Channel Code</option>
+              <option value="codablockf">Codablock F</option>
+              <option value="code11">Code 11</option>
+              <option value="code128">Code 128</option>
+              <option value="code16k">Code 16K</option>
+              <option value="code2of5">Code 25</option>
+              <option value="code32">Italian Pharmacode</option>
+              <option value="code39">Code 39</option>
+              <option value="code39ext">Code 39 Extended</option>
+              <option value="code49">Code 49</option>
+              <option value="code93">Code 93</option>
+              <option value="code93ext">Code 93 Extended</option>
+              <option value="codeone">Code One</option>
+              <option value="coop2of5">COOP 2 of 5</option>
+              <option value="daft">Custom 4 State Symbology</option>
+              <option value="databarexpanded">GS1 DataBar Expanded</option>
+              <option value="databarexpandedcomposite">
+                GS1 DataBar Expanded Composite
+              </option>
+              <option value="databarexpandedstacked">
+                GS1 DataBar Expanded Stacked
+              </option>
+              <option value="databarexpandedstackedcomposite">
+                GS1 DataBar Expanded Stacked Composite
+              </option>
+              <option value="databarlimited">GS1 DataBar Limited</option>
+              <option value="databarlimitedcomposite">
+                GS1 DataBar Limited Composite
+              </option>
+              <option value="databaromni">GS1 DataBar Omnidirectional</option>
+              <option value="databaromnicomposite">
+                GS1 DataBar Omnidirectional Composite
+              </option>
+              <option value="databarstacked">GS1 DataBar Stacked</option>
+              <option value="databarstackedcomposite">
+                GS1 DataBar Stacked Composite
+              </option>
+              <option value="databarstackedomni">
+                GS1 DataBar Stacked Omnidirectional
+              </option>
+              <option value="databarstackedomnicomposite">
+                GS1 DataBar Stacked Omnidirectional Composite
+              </option>
+              <option value="databartruncated">GS1 DataBar Truncated</option>
+              <option value="databartruncatedcomposite">
+                GS1 DataBar Truncated Composite
+              </option>
+              <option value="datalogic2of5">Datalogic 2 of 5</option>
+              <option value="datamatrix">Data Matrix</option>
+              <option value="datamatrixrectangular">
+                Data Matrix Rectangular
+              </option>
+              <option value="datamatrixrectangularextension">
+                Data Matrix Rectangular Extension
+              </option>
+              <option value="dotcode">DotCode</option>
+              <option value="ean13">EAN-13</option>
+              <option value="ean13composite">EAN-13 Composite</option>
+              <option value="ean14">GS1-14</option>
+              <option value="ean2">EAN-2 (2 digit addon)</option>
+              <option value="ean5">EAN-5 (5 digit addon)</option>
+              <option value="ean8">EAN-8</option>
+              <option value="ean8composite">EAN-8 Composite</option>
+              <option value="flattermarken">Flattermarken</option>
+              <option value="gs1-128">GS1-128</option>
+              <option value="gs1-128composite">GS1-128 Composite</option>
+              <option value="gs1-cc">GS1 Composite 2D Component</option>
+              <option value="gs1datamatrix">GS1 Data Matrix</option>
+              <option value="gs1datamatrixrectangular">
+                GS1 Data Matrix Rectangular
+              </option>
+              <option value="gs1dldatamatrix">
+                GS1 Digital Link Data Matrix
+              </option>
+              <option value="gs1dlqrcode">GS1 Digital Link QR Code</option>
+              <option value="gs1dotcode">GS1 DotCode</option>
+              <option value="gs1northamericancoupon">
+                GS1 North American Coupon
+              </option>
+              <option value="gs1qrcode">GS1 QR Code</option>
+              <option value="hanxin">Han Xin Code</option>
+              <option value="hibcazteccode">HIBC Aztec Code</option>
+              <option value="hibccodablockf">HIBC Codablock F</option>
+              <option value="hibccode128">HIBC Code 128</option>
+              <option value="hibccode39">HIBC Code 39</option>
+              <option value="hibcdatamatrix">HIBC Data Matrix</option>
+              <option value="hibcdatamatrixrectangular">
+                HIBC Data Matrix Rectangular
+              </option>
+              <option value="hibcmicropdf417">HIBC MicroPDF417</option>
+              <option value="hibcpdf417">HIBC PDF417</option>
+              <option value="hibcqrcode">HIBC QR Code</option>
+              <option value="iata2of5">IATA 2 of 5</option>
+              <option value="identcode">Deutsche Post Identcode</option>
+              <option value="industrial2of5">Industrial 2 of 5</option>
+              <option value="interleaved2of5">Interleaved 2 of 5 (ITF)</option>
+              <option value="isbn">ISBN</option>
+              <option value="ismn">ISMN</option>
+              <option value="issn">ISSN</option>
+              <option value="itf14">ITF-14</option>
+              <option value="japanpost">
+                Japan Post 4 State Customer Code
+              </option>
+              <option value="kix">Royal Dutch TPG Post KIX</option>
+              <option value="leitcode">Deutsche Post Leitcode</option>
+              <option value="mailmark">Royal Mail Mailmark</option>
+              <option value="mands">Marks & Spencer</option>
+              <option value="matrix2of5">Matrix 2 of 5</option>
+              <option value="maxicode">MaxiCode</option>
+              <option value="micropdf417">MicroPDF417</option>
+              <option value="microqrcode">Micro QR Code</option>
+              <option value="msi">MSI Modified Plessey</option>
+              <option value="onecode">USPS Intelligent Mail</option>
+              <option value="pdf417">PDF417</option>
+              <option value="pdf417compact">Compact PDF417</option>
+              <option value="pharmacode">Pharmaceutical Binary Code</option>
+              <option value="pharmacode2">Two-track Pharmacode</option>
+              <option value="planet">USPS PLANET</option>
+              <option value="plessey">Plessey UK</option>
+              <option value="posicode">PosiCode</option>
+              <option value="postnet">USPS POSTNET</option>
+              <option value="pzn">Pharmazentralnummer (PZN)</option>
+              <option value="qrcode">QR Code</option>
+              <option value="rationalizedCodabar">Codabar</option>
+              <option value="raw">Custom 1D symbology</option>
+              <option value="rectangularmicroqrcode">
+                Rectangular Micro QR Code
+              </option>
+              <option value="royalmail">
+                Royal Mail 4 State Customer Code
+              </option>
+              <option value="sscc18">SSCC-18</option>
+              <option value="swissqrcode">Swiss QR Code</option>
+              <option value="symbol">Miscellaneous symbols</option>
+              <option value="telepen">Telepen</option>
+              <option value="telepennumeric">Telepen Numeric</option>
+              <option value="ultracode">Ultracode</option>
+              <option value="upca">UPC-A</option>
+              <option value="upcacomposite">UPC-A Composite</option>
+              <option value="upce">UPC-E</option>
+              <option value="upcecomposite">UPC-E Composite</option>
+            </select>
+          </div>
 
           <!-- Input form for barcode data -->
           <div class="mb-3">
@@ -74,9 +229,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bwip-js@2.1.2/dist/bwip-js-min.js"></script>
 
     <script>
-      // Function to generate the Aztec barcode
+      // Function to generate the selected barcode
       function generateBarcode() {
         let data = document.getElementById("barcodeData").value;
+        let barcodeType = document.getElementById("barcodeType").value;
 
         // Try to parse the input as JSON
         try {
@@ -88,11 +244,11 @@
           return;
         }
 
-        // Generate the Aztec barcode and render it on the canvas
+        // Generate the barcode and render it on the canvas
         bwipjs.toCanvas(
           "barcodeCanvas",
           {
-            bcid: "azteccode", // Aztec code symbology
+            bcid: barcodeType, // Selected barcode symbology
             text: data, // Data to encode
             scale: 3, // Scaling factor
             version: 0, // Auto version
@@ -104,7 +260,7 @@
               console.error("Error generating barcode:", err);
               alert("Error generating barcode. Please check the input.");
             } else {
-              console.log("Aztec barcode generated successfully!");
+              console.log("Barcode generated successfully!");
               document.getElementById("downloadBtn").style.display = "block"; // Show download button
             }
           }
@@ -115,7 +271,7 @@
       function downloadBarcode() {
         const canvas = document.getElementById("barcodeCanvas");
         const link = document.createElement("a");
-        link.download = "aztec_barcode.png";
+        link.download = "barcode.png";
         link.href = canvas.toDataURL("image/png");
         link.click();
       }
